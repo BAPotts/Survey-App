@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 ## Wireframe
+
+<img src="src/images/survey-drawing_v1.0.png" />
+
+
 <img src="src/images/Survey-Component1.png" />
 
 
