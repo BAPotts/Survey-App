@@ -37,7 +37,7 @@ class SurveyControl extends React.Component {
   handleChangingSelectedSurvey = (id) => {
     this.props.firestore.get({collection: 'surveys', doc: id}).then((survey) => {
       const firestoreSurvey = {
-        surveyName: survey.get("surveyName"),
+        surveyTitle: survey.get("surveyTitle"),
         question1: survey.get("question1"),
         question1answer1: survey.get("question1answer1"),
         question1answer2: survey.get("question1answer2"),
@@ -119,4 +119,4 @@ const mapStateToProps = state => {
 
 SurveyControl = connect(mapStateToProps)(SurveyControl);
 
-export default withFireStore(SurveyControl);
+export default withFirestore(SurveyControl);
