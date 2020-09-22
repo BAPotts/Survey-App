@@ -4,6 +4,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### Taylor Somers, Beverly Potts, Tyson Lackey, Joseph Pearce
 
+
+## Wireframe
+<img src="src/images/Survey-Component1.png" />
+
+
 In the project directory, you can run:
 
 ### `npm start`
