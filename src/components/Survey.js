@@ -12,6 +12,7 @@ function Survey(props) {
             <p>Survey Answer</p>
             {/* <button onClick={() => props.onSurveySelection(survey.id) }> Take Survey </button> */}
             <button onClick = { () => props.whenSurveyDetailButtonClicked(props.id) }>Survey Details</button>
+            <button onClick = { () => props.whenTakeSurveyButtonClicked(props.id)}>Take Survey</button>
         </div>
         
         </React.Fragment>

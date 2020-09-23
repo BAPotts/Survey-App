@@ -23,6 +23,14 @@ function NewSurvey(props) {
         question2answer2: event.target.question2answer2.value,
         question2answer3: event.target.question2answer3.value,
         question2answer4: event.target.question2answer4.value,
+        q1a1count: 0,
+        q1a2count: 0,
+        q1a3count: 0,
+        q1a4count: 0,
+        q2a1count: 0,
+        q2a2count: 0,
+        q2a3count: 0,
+        q2a4count: 0
       }
     );
   }

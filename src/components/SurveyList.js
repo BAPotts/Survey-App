@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 
 function SurveyList(props) {
-  const { survey, onSurveySelection } = props;
+  const { survey, onSurveySelection, onTakeSurvey } = props;
   useFirestoreConnect([
     { collection: 'surveys' }
   ]);
@@ -19,6 +19,7 @@ function SurveyList(props) {
         {surveys.map((survey) => {
           return <Survey
             whenSurveyDetailButtonClicked = {props.onSurveySelection}
+            whenTakeSurveyButtonClicked = {props.onTakeSurvey}
             // whenSurveyClicked = {props.onSurveySelection}
             surveyTitle = {survey.surveyTitle}
             question1 = {survey.question1}
@@ -36,7 +37,6 @@ function SurveyList(props) {
             // <div>
             //    <button onClick={() => props.onSurveySelection(survey.id) }> Take Survey </button>
             // </div>
-           
         })}
       </React.Fragment>
     );
@@ -50,7 +50,8 @@ function SurveyList(props) {
 }
 
 SurveyList.propTypes = {
-  onSurveySelection: PropTypes.func
+  onSurveySelection: PropTypes.func,
+  onTakeSurvey: PropTypes.func
 };
 
 export default SurveyList;
