@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 function Survey(props) {
     return (
         <React.Fragment>
-        <h1>Survey Title</h1>
-        <p>Survey Question</p>
-        <p>Survey Answer</p>
+        <div onClick = {() => props.whenSurveyClicked(props.id)}>
+            <h1>Survey Title: {props.surveyTitle}</h1>
+            <p>Survey Question 1: {props.question1}</p>
+            <p>Survey Answer</p>
+        </div>
         </React.Fragment>
-
     );
 }
 

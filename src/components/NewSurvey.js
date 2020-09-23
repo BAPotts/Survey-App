@@ -9,6 +9,7 @@ function NewSurvey(props) {
   function addSurveyToFirestore(event) {
     event.preventDefault();
     props.onNewSurveyCreation();
+    
 
     return firestore.collection('surveys').add(
       {
@@ -29,7 +30,7 @@ function NewSurvey(props) {
 
   return (
     <React.Fragment>
-      <form>
+      <form onSubmit={addSurveyToFirestore}>
         <input
           type="text"
           name="surveyTitle"
@@ -93,6 +94,10 @@ function NewSurvey(props) {
       </form>
     </React.Fragment>
   );
+}
+
+NewSurvey.propTypes = {
+  onNewSurveyCreation: PropTypes.func
 }
 
 export default NewSurvey;

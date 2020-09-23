@@ -2,11 +2,11 @@ import React from 'react';
 import NewSurvey from './NewSurvey';
 import SurveyList from './SurveyList';
 import SurveyDetail from './SurveyDetail';
-import SurveyForm from './SurveyForm';
-import {connect} from 'react-redux';
+// import SurveyForm from './SurveyForm';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as a from './../actions';
-import {withFirestore, isLoaded } from 'react-redux-firebase';
+import { withFirestore, isLoaded } from 'react-redux-firebase';
 
 class SurveyControl extends React.Component {
   constructor(props) {
@@ -22,14 +22,14 @@ class SurveyControl extends React.Component {
         selectedSurvey: null
       });
     } else {
-      const {dispatch} = this.props;
+      const { dispatch } = this.props;
       const action = a.toggleForm();
       dispatch(action);
     }
   }
 
   handleAddingNewSurveyToList = () => {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     const action = a.toggleForm();
     dispatch(action);
   }
@@ -60,24 +60,26 @@ class SurveyControl extends React.Component {
   }
 
   render(){
-    const auth = this.props.firebase.auth();
-    if(!isLoaded(auth)) {
-      return (
-        <React.Fragment>
-          <h1>Loading...</h1>
-        </React.Fragment>
-      )
-    }
-    if ((isLoaded(auth)) && (auth.currentUser == null)) {
-      return (
-        <React.Fragment>
-          <h1>You must be signed in to access the survey list.</h1>
-        </React.Fragment>
-      )
-    }
-    if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      let currentlyVisibleState = null;
-      let buttonText = null;
+    let currentlyVisibleState = null;
+    let buttonText = null;
+    
+    // const auth = this.props.firebase.auth();
+    // if(!isLoaded(auth)) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>Loading...</h1>
+    //     </React.Fragment>
+    //   )
+    // }
+    // if ((isLoaded(auth)) && (auth.currentUser == null)) {
+    //   return (
+    //     <React.Fragment>
+    //       <h1>You must be signed in to access the survey list.</h1>
+    //     </React.Fragment>
+    //   )
+    // }
+    // if ((isLoaded(auth)) && (auth.currentUser != null)) {
+
       if (this.state.selectedSurvey != null) {
         currentlyVisibleState = 
         <SurveyDetail
@@ -92,7 +94,9 @@ class SurveyControl extends React.Component {
       //   currentlyVisibleState = <SurveyForm onTakeSurvey = {this.handleAddingSurveyAnswer} />;
       //   buttonText = "Submit Survey Answer"
       } else {
-        currentlyVisibleState = <SurveyList surveyList={this.props.masterSurveyList} onSurveySelection={this.handleChangingSelectedSurvey} />;
+        currentlyVisibleState = <SurveyList 
+        surveyList={this.props.masterSurveyList}
+        onSurveySelection={this.handleChangingSelectedSurvey} />;
         buttonText = "Add New Survey";
       }
       return (
@@ -101,7 +105,8 @@ class SurveyControl extends React.Component {
           <button onClick={this.handleClick}>{buttonText}</button>
         </React.Fragment>
       );
-    }
+
+    // }
   }
 }
 

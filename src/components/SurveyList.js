@@ -6,21 +6,31 @@ import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
 
 function SurveyList(props) {
   useFirestoreConnect([
-    {collection: 'surveys'}
+    { collection: 'surveys' }
   ]);
 
   const surveys = useSelector(state => state.firestore.ordered.surveys);
-
-  return (
-    <React.Fragment>
-      <h1>Survey List</h1>
-      {surveys.map((survey) => {
-        return <Survey 
-          whenSurveyClicked = {props.onSurveySelection}
-          surveyTitle = {survey.surveyTitle} />
-      })}
-  </React.Fragment>
-  );
+  
+  if (isLoaded(surveys)) {
+    return (
+      <React.Fragment>
+        <h1>Survey List</h1>
+        {surveys.map((survey) => {
+          return <Survey 
+            whenSurveyClicked = {props.onSurveySelection}
+            surveyTitle = {survey.surveyTitle}
+            question1={survey.question1} />
+  
+        })}
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <h3>Loading ...</h3>
+      </React.Fragment>
+    )
+  }
 }
 
 SurveyList.propTypes = {
