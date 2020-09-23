@@ -1,9 +1,26 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-// import {useFirestoreConnect, isLoaded } from 'react-redux-firebase';
+import React from "react";
+import PropTypes from "prop-types";
+import { useFirestore, useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 
 
-// function SurveyForm(props) {
+function SurveyForm(props) {
+
+  const firestore = useFirestore();
+
+  function addSurveyResultsToFirestore(event) {
+    event.preventDefault();
+    props.onSurveySubmission();
+
+    return firestore.collection('surveys').add(
+      {
+        surveyTitle: event.target.surveyTitle.value,
+        question1: event.target.question1.value,
+        question1answer1: event.target.question1response.value,
+        question2: event.target.question2.value,
+        question2answer1: event.target.question2response.value,
+      }
+    );
+  }
 
 //   useFirestoreConnect([
 //     { collection: 'Surveys' }
@@ -35,8 +52,9 @@
 //       </React.Fragment>
 //     )
 //   }
-// }
+}
 
+export default SurveyForm;
 
 // | Key | Surveyname | question1 | question1answer1 | question1answer2 | ... |
 // | Key | Surveyname | answerToQuestion1 | answerToQuestion2 | answerToQuestion3 | answerToQuestion4 |

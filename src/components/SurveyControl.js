@@ -1,6 +1,7 @@
 import React from 'react';
 import NewSurvey from './NewSurvey';
 import SurveyList from './SurveyList';
+import SurveyForm from './SurveyForm';
 import SurveyDetail from './SurveyDetail';
 // import SurveyForm from './SurveyForm';
 import { connect } from 'react-redux';
@@ -34,6 +35,12 @@ class SurveyControl extends React.Component {
     dispatch(action);
   }
 
+  handleTakingSurvey = () => {
+    const { dispatch } = this.props;
+    const action = a.toggleTakingSurvey();
+    dispatch(action);
+  }
+
   handleChangingSelectedSurvey = (id) => {
     this.props.firestore.get({collection: 'surveys', doc: id}).then((survey) => {
       const firestoreSurvey = {
@@ -53,6 +60,8 @@ class SurveyControl extends React.Component {
       this.setState({selectedSurvey: firestoreSurvey});
     });
   }
+
+  
 
   handleDeletingSurvey = (id) => {
     this.props.firestore.delete({collection: 'surveys', doc: id});
@@ -87,8 +96,13 @@ class SurveyControl extends React.Component {
           onClickingDelete = {this.handleDeletingSurvey}
           onClickingTakeSurvey = {this.handleTakeSurvey} />
           buttonText = "Return to Survey List";
+      } else if (this.state.selectedSurvey != null && this.props.surveyFormVisibleOnPage) {
+          currentlyVisibleState = <SurveyForm
+            onSurveySubmission = {this.handleSubmittingSurvey}
+          />
       } else if (this.props.newSurveyVisbleOnPage) {
-        currentlyVisibleState = <NewSurvey onNewSurveyCreation = {this.handleAddingNewSurveyToList} />;
+        currentlyVisibleState = <NewSurvey 
+        onNewSurveyCreation = {this.handleAddingNewSurveyToList} />;
         buttonText = "Return to Survey List";
       // } else if (this.props.takeSurveyVisibleOnPage) {
       //   currentlyVisibleState = <SurveyForm onTakeSurvey = {this.handleAddingSurveyAnswer} />;
@@ -117,8 +131,8 @@ SurveyControl.propTypes = {
 const mapStateToProps = state => {
   return {
     masterSurveyList: state.masterSurveyList,
-    newSurveyVisbleOnPage: state.newSurveyVisbleOnPage
-    // takeSurveyVisbleOnPage: state.takeSurveyVisibleOnPage
+    newSurveyVisbleOnPage: state.newSurveyVisbleOnPage,
+    surveyFormVisibleOnPage: state.surveyFormVisibleOnPage
   }
 }
 

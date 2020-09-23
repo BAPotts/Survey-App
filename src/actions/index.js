@@ -8,3 +8,7 @@ export const deleteSURVEY = id => ({
 export const toggleForm = () => ({
   type: c.TOGGLE_FORM
 });
+
+export const toggleTakingSurvey = () => ({
+  type: c.TOGGLE_TAKING_SURVEY
+});

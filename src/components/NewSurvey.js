@@ -9,7 +9,6 @@ function NewSurvey(props) {
   function addSurveyToFirestore(event) {
     event.preventDefault();
     props.onNewSurveyCreation();
-    
 
     return firestore.collection('surveys').add(
       {
