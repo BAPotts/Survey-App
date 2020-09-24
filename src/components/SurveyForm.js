@@ -10,8 +10,8 @@ function SurveyForm(props) {
 
   function handleOptionChange(event){
     this.setState({
-      question1: event.target.question1.value,
-      question2: event.target.question2.value
+      question1: event.target.value,
+      question2: event.target.value
     });
     console.log(this.state.question1, this.state.question2)
   }
@@ -39,7 +39,7 @@ function SurveyForm(props) {
     <React.Fragment>
       <h1>{survey.surveyTitle}</h1>
       <form
-         onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <h3>{survey.question1}</h3>
         <label>
@@ -48,7 +48,7 @@ function SurveyForm(props) {
           name="question1"
           value="q1a1count"
           checked={survey.question1 === "q1a1count"}
-          onChange={survey.handleOptionChange}/>
+          onChange={handleOptionChange}/>
           {survey.question1answer1}
         </label>
         <label> 
@@ -56,7 +56,7 @@ function SurveyForm(props) {
           name="question1" 
           value="q1a2count" 
           checked={survey.question1 === "q1a2count"}
-          onChange={survey.handleOptionChange} />
+          onChange={handleOptionChange} />
           {survey.question1answer2}
         </label>
         <label>
@@ -64,7 +64,7 @@ function SurveyForm(props) {
           name="question1"
           value="q1a3count"
           checked={survey.question1 === "q1a3count"}
-          onChange={survey.handleOptionChange} />
+          onChange={handleOptionChange} />
           {survey.question1answer3}
         </label> 
         <label> 
@@ -72,7 +72,7 @@ function SurveyForm(props) {
           name="question1" 
           value="q1a4count"
           checked={survey.question1 === "q1a4count"}
-          onChange={survey.handleOptionChange} />
+          onChange={handleOptionChange} />
           {survey.question1answer4}
         </label>  
 
@@ -82,7 +82,7 @@ function SurveyForm(props) {
           name="question2" 
           value="q2a1count" 
           checked={survey.question2 === "q2a1count"}
-          onChange={survey.handleOptionChange}/>
+          onChange={handleOptionChange}/>
           {survey.question2answer1}
           </label>
           <label>
@@ -90,7 +90,7 @@ function SurveyForm(props) {
             name="question2" 
             value="q2a2count" 
             checked={survey.question2 === "q2a2count"}
-            onChange={survey.handleOptionChange}/>
+            onChange={handleOptionChange}/>
             {survey.question2answer2}
           </label>
           <label>
@@ -98,7 +98,7 @@ function SurveyForm(props) {
             name="question2" 
             value="q2a3count"
             checked={survey.question2 === "q1a3count"}
-            onChange={survey.handleOptionChange} />
+            onChange={handleOptionChange} />
             {survey.question2answer3}
           </label>
           <label>
@@ -106,7 +106,7 @@ function SurveyForm(props) {
             name="question2" 
             value="q2a4count"
             checked={survey.question2 === "q2a4count"}
-            onChange={survey.handleOptionChange} />
+            onChange={handleOptionChange} />
             {survey.question2answer4}
           </label>
         <button type="submit">Submit Survey</button>
