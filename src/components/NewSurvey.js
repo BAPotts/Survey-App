@@ -97,7 +97,7 @@ function NewSurvey(props) {
             placeholder="Answer 4"
           />
         </div>
-        <button type="submit">Submit Survey</button>
+        <button type="submit">Add new survey</button>
       </form>
     </React.Fragment>
   );

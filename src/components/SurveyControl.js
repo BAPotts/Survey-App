@@ -3,7 +3,6 @@ import NewSurvey from './NewSurvey';
 import SurveyList from './SurveyList';
 import SurveyForm from './SurveyForm';
 import SurveyDetail from './SurveyDetail';
-// import SurveyForm from './SurveyForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as a from './../actions';
@@ -13,9 +12,14 @@ class SurveyControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedSurvey: null
+      selectedSurvey: null,
+      question1: null,
+      question2: null
     }
   }
+
+  
+
 
   handleClick = () => {
     if(this.state.selectedSurvey != null) {
@@ -87,7 +91,7 @@ class SurveyControl extends React.Component {
     this.setState({selectedSurvey: null});
   }
 
-  render(){
+  render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     
